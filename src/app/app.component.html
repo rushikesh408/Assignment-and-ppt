@@ -1,0 +1,98 @@
+
+<h1>Angular 7 Routing Demo</h1> 
+<nav> 
+  <a routerLink = "/home">Home</a> 
+  <a routerLink = "/contactus">Contact Us </a> 
+</nav>
+<router-outlet></router-outlet>
+
+<button mat-button [matMenuTriggerFor] = "menu">Menu</button> 
+<mat-menu #menu = "matMenu"> 
+   <button mat-menu-item> File </button> 
+   <button mat-menu-item> Save As </button>
+</mat-menu>
+<mat-form-field>
+  <input matInput [matDatepicker] = "picker" placeholder = "Choose a date"> 
+  <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<h1>
+  welcome to  {{title}}!!
+ </h1>
+<br>
+<div>
+  <span Demodirective > Welcome to {{title}}</span>
+</div>
+<div>
+  Months <select (change)="changeMonthsEvent($event)">
+    <option *ngFor= "let i of months">{{i}}</option>
+  </select>
+</div>
+
+<div> 
+  <span *ngIf = "isavailable; else condition2">
+     Condition is valid.
+  </span>
+  <ng-template #condition1>Condition is valid from template </ng-template> 
+  <ng-template #condition2>Condition is invalid from template</ng-template> 
+</div>
+<button (click) = "myClickFunction($event)">Click Me</button>
+
+ 
+
+  <p>
+    Todays date is {{todayDate}}
+  </p>
+  <div>
+    {{title | uppercase}} <br>
+
+    {{title | lowercase}}  <br>
+
+      <h1>Currency Pipe</h1> 
+    <p>
+      {{6589.23 | currency : "INR"}}
+      <br>
+
+      {{6589.23 | currency : "INR": true}}
+    </p>
+
+    <p>
+      DATE PIPE   
+      {{currentdate | date:'d/M/y'}} <br> <br>
+      SHORT TIME    
+      {{currentdate | date:'shortTime'}} <br><br>
+      DECIMAL Pipe
+      <br>
+   
+      <b>{{ 454.78787814 | number: '3.4-4' }}</b> 
+    </p>
+
+   <h1>JSON PIPE</h1>
+    <p>
+        {{jsonvalues | json}}
+    </p>
+    <h1>PERCENT PIPE </h1>
+    <p>
+      {{0.100 | percent}}
+    </p>
+    <h1>SLICE PIPE</h1>
+    <p>
+      {{months | slice:0:2}}
+    </p>
+
+
+
+    <div> 
+      <button (click) = "animate()">Click Me</button> 
+      <div [@myanimation] = "state" class = "rotate"> 
+         <img src = "assets/images/image.jpg" width = "100" height = "100">
+      </div> 
+   </div>
+   <br><br><br><br><br><br><br><br>
+   
+  </div>
+
+  
+<app-test>
+  </app-test>
